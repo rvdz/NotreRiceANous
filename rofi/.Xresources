@@ -1,0 +1,38 @@
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+ 
+rofi.modi:              window,run
+rofi.sidebar-mode:      false
+rofi.terminal:          termite
+rofi.ssh-client:        ssh
+rofi.ssh-command:       {terminal} -e "{ssh-client} {host}"
+rofi.font:              SFNS Display 13
+rofi.columns:           1
+rofi.color-enabled:     true
+rofi.fullscreen:        true
+rofi.hide-scrollbar:    true
+
+!color : <bg>, <border>, <separator_line>
+rofi.color-window:      argb:B3000000, argb:B3000000, argb:E6ffffff
+
+!color : <bg_alt>, <fg>, <bg>, <bg_hl>, <fg_hl>
+rofi.color-normal:      argb:00000000, argb:969896B3, argb:00000000, argb:00000000, argb:FFFFFFFF
+rofi.color-urgent:      argb:00282a2e, argb:FFcc6666, argb:00282a2e, argb:00000000, argb:e61d1f21
+rofi.color-active:      argb:00282a2e, argb:FF81a2be, argb:00282a2e, argb:00000000, argb:FFFFFFFF
+
+!solid(=line), dash, none
+rofi.separator-style:   solid
+
+!space between top screen and menu
+rofi.padding:           240
+
+!inline space
+rofi.line-margin:       30
+
+!useless with fullscreen
+rofi.location:          0
+rofi.yoffset:           0
+rofi.xoffset:           0
+rofi.width:             1700
+rofi.lines:             5
