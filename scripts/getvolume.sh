@@ -1,15 +1,4 @@
 #!/bin/bash
-# Determine if the sound is muted or not.
-#OUTPUT=$(pacmd list-sinks | grep "active port")
-#HEADPHONES=false
-#
-## Check if the headphones are being used.
-#case $OUTPUT in
-#    *"<analog-output-headphones>"*) HEADPHONES=true;;
-#esac
-#
-#echo "$OUTPUT"
-#echo "$HEADPHONES"
 
 # Check if the sound is muted or not.
 if [ ! -z "$(amixer get Master | grep off)" ]; then
@@ -19,11 +8,12 @@ if [ ! -z "$(amixer get Master | grep off)" ]; then
         echo " Mute"
     fi
 else
-
     # The sound is not muted get the volume and print it out.
     volume=$(amixer get Master |grep % | head -n 1 |awk '{print $5}'|sed 's/[^0-9\%]//g')
     if [ "$HEADPHONES" = "true" ]; then
         echo " $volume"
+    elif [ "$volume" = "0%" ]; then
+        echo " $volume"
     else
         echo " $volume"
     fi
