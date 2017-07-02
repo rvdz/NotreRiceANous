@@ -25,6 +25,10 @@ if [ "$percent" -gt 75 ]; then
 	icon=" "
 fi
 
-echo $icon" "$percent%
+if [ -z "$(acpi -b | grep -i "discharging")" ]; then
+	echo " "$icon" "$percent%
+else
+	echo $icon" "$percent%
+fi
 
 exit 0
