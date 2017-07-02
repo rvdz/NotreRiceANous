@@ -1,5 +1,3 @@
 #!/bin/bash
 
-ans=`ping 8.8.8.8 -c 1 | head -n 2 | tail -n 1 | cut -d '=' -f 4`
-
-echo " $ans"
+echo " $(ping 8.8.8.8 -c 1 | grep "time=" | sed -r 's/^.*time=([0-9]+).*$/\1/g') ms"
