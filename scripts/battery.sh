@@ -8,6 +8,8 @@ for i in $(seq 0 $(($nb_bat-1))); do
 	percent=$(($percent+p))
 done
 
+percent=$(($percent/$nb_bat))
+
 icon=" "
 
 if [ "$percent" -gt 10 ]; then
@@ -23,6 +25,6 @@ if [ "$percent" -gt 75 ]; then
 	icon=" "
 fi
 
-echo $icon" "$(($percent/$nb_bat))%
+echo $icon" "$percent%
 
 exit 0
