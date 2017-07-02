@@ -2,7 +2,7 @@
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
  
-rofi.modi:              run,window
+rofi.modi:              run, window
 rofi.sidebar-mode:      false
 rofi.terminal:          termite
 rofi.ssh-client:        ssh
