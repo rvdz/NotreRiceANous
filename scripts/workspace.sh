@@ -58,8 +58,18 @@ case $browser in
 esac
 
 case $keyword in
+*"yahoo"*)
+  icon=" ";;
+
 *"imdb"*)
   icon=" ";;
+
+*"stack overflow"*)
+  icon=" ";;
+
+*"facebook"*)
+  icon="";;
+
 *);;
 esac
 
@@ -70,12 +80,6 @@ case $engine in
 
 *"reddit"*)
   icon=" ";;
-
-*"facebook"*)
-  icon="";;
-
-*"stack overflow"*)
-  icon=" ";;
 
 *"amazon"*) 
   icon=" ";;
