@@ -9,12 +9,12 @@ if [ ! -z "$(amixer get Master | grep off)" ]; then
     fi
 else
     # The sound is not muted get the volume and print it out.
-    volume=$(amixer get Master |grep % | head -n 1 |awk '{print $5}'|sed 's/[^0-9\%]//g')
+    volume=$(amixer get Master |grep % | head -n 1 | sed -r 's/^.*\[([0-9]+)%\].*$/\1/g' )
     if [ "$HEADPHONES" = "true" ]; then
-        echo " $volume"
+        echo " $volume%"
     elif [ "$volume" = "0%" ]; then
-        echo " $volume"
+        echo " $volume%"
     else
-        echo " $volume"
+        echo " $volume%"
     fi
 fi
