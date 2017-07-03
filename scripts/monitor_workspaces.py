@@ -9,6 +9,7 @@ import sys
 focused_ws = ""
 urgent_ws = ""
 unfocused_ws = ""
+center_char = '  '
 
 # Builds the workspace line.
 def buildWorkspaceLine(workspaces):
@@ -40,7 +41,7 @@ i3 = i3ipc.Connection()
 
 workspaces = i3.get_workspaces()
 workspaceLine = buildWorkspaceLine(workspaces)
-printData(workspaceLine)
+printData(center_char + workspaceLine)
 
 def on_workspace_focus(self, e):
     if not e.change in ['init','focus','empty','rename','urgent']:
@@ -48,7 +49,7 @@ def on_workspace_focus(self, e):
 
     workspaces = self.get_workspaces()
     workspaceLine = buildWorkspaceLine(workspaces)
-    printData(workspaceLine)
+    printData(center_char + workspaceLine)
 
 i3.on('workspace', on_workspace_focus)
 i3.main()
