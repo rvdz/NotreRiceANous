@@ -1,18 +1,20 @@
 #!/bin/bash
 
-config=$(/sbin/iwconfig 2>/dev/null | head -n 1)
-# No connection
-if [[ -z $(echo "$config" | grep 'ESSID:"') ]]; then
+eth_con=$(/sbin/ifconfig 2>/dev/null | grep -v "\"" | grep -i ethernet)
+wifi_con=$(/sbin/iwconfig 2>/dev/null | grep "\"" | head -n 1)
+
+if [[ $eth_con ]] && [ -z $wifi_con]; then
+    # Ethernet connection
+	echo "⇅ Ethernet"
+
+elif [[ $wifi_con ]]; then
+    # Wifi connection
+    name=$(echo "$wifi_con" | sed -r 's/^.*ESSID:"(.+)".*$/\1/g')
+    sig_quality=$(/sbin/iwconfig 2>/dev/null | tail -n +2 | grep -i "quality" | sed -r 's/^.*Quality=([0-9]+\/[0-9]+).*$/100*\1/g' | bc)
+	echo " $name ($sig_quality%)"
+
+else
+    # No connection
 	echo "(Not Connected)"
 	exit 0
-fi
-
-type=$(echo "$config" | awk '{print $1}')
-name=$(echo "$config" | sed -r 's/^.*ESSID:"(.+)".*$/\1/g')
-sig_quality=$(/sbin/iwconfig 2>/dev/null | tail -n +2 | grep -i "quality" | sed -r 's/^.*Quality=([0-9]+\/[0-9]+).*$/100*\1/g' | bc)
-
-if [ $(echo "$type" | grep wlan) ]; then
-	echo " $name ($sig_quality%)" 
-else
-	echo " $name ($sig_quality%)" 
 fi
