@@ -3,7 +3,7 @@
 eth_con=$(/sbin/ifconfig 2>/dev/null | grep -v "\"" | grep -i ethernet)
 wifi_con=$(/sbin/iwconfig 2>/dev/null | grep "\"" | head -n 1)
 
-if [[ $eth_con ]] && [ -z $wifi_con]; then
+if [ "$eth_con" != 0 ] && [ "$wifi_con" == 0 ]; then
     # Ethernet connection
 	echo "⇅ Ethernet"
 
