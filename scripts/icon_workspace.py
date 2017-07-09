@@ -15,73 +15,73 @@ def get_ws_icon(e):
 	default_icon = " "
 	title = i3.get_tree().find_focused().name.lower()
 	wclass = i3.get_tree().find_focused().window_class
-	
+
 	if wclass is None:
 		return default_icon
 	wclass = wclass.lower()
 
 	# titles
 	engines = {
-			"ecosia": " ",
-			"google": " ",
-			"lilo": "",
-			"yahoo": " "
-			}
+				"ecosia":  " ",
+				"google":  " ",
+				"lilo":    " ",
+				"yahoo":   " "
+			  }
 
 	sites = {
-			"amazon": " ",
-			"apple": " ",
-			"deviantart": "",
-			"dropbox": " ",
-			"github": " ",
-			"maps": " ",
-			"facebook": "",
-			"imdb": " ",
-			"instagram": " ",
-			"lilo": "",
-			"linkedin": " ",
-			"mail": " ",
-			"overleaf": " ",
-			"paypal": " ",
-			"pinterest": " ",
-			"reddit": " ",
-			"skype": " ",
-			"slack": " ",
-			"snapchat": " ",
-			"soundcloud": " ",
-			"spotify": " ",
-			"stack exchange": " ",
-			"stack overflow": " ",
-			"steam": " ",
-			"telegram": " ",
-			"trello": " ",
-			"tripadvisor": " ",
-			"tumblr": "",
-			"twitch": " ",
-			"twitter": " ",
-			"vimeo": " ",
-			"vine": " ",
-			"wikipedia": " ",
-			"wordpress": " ",
-			"yahoo": " ",
-			"youtube": " "
+				"amazon":       " ",
+				"apple":        " ",
+				"deviantart":   " ",
+				"dropbox":      " ",
+				"facebook":     " ",
+				"github":       " ",
+				"imdb":         " ",
+				"instagram":    " ",
+				"lilo":         " ",
+				"linkedin":     " ",
+				"mail":         " ",
+				"maps":         " ",
+				"overleaf":     " ",
+				"paypal":       " ",
+				"pinterest":    " ",
+				"reddit":       " ",
+				"skype":        " ",
+				"slack":        " ",
+				"snapchat":     " ",
+				"soundcloud":   " ",
+				"spotify":      " ",
+				"stack exchange": " ",
+				"stack overflow": " ",
+				"steam":        " ",
+				"telegram":     " ",
+				"trello":       " ",
+				"tripadvisor":  " ",
+				"tumblr":       " ",
+				"twitch":       " ",
+				"twitter":      " ",
+				"vimeo":        " ",
+				"vine":         " ",
+				"wikipedia":    " ",
+				"wordpress":    " ",
+				"yahoo":        " ",
+				"youtube":      " "
 			}
 
 	term = {
-			"vim": " "
-			}
+				"vim": " "
+		   }
 
 	# classes
 	apps = {
-			"telegram": " "
-			}
+				"telegram": " "
+		   }
 
 	classes = {
-			"terminal": " ", 
-			"google-chrome": " ", 
-			"chromium": " ", 
-			"firefox": " "
-			}
+				"chromium":       "  ",
+				"firefox":        "  ",
+				"google-chrome":  "  ",
+				"terminal":       "  "
+			  }
 
 	icon = default_icon
 	for key in apps.iterkeys():
@@ -105,7 +105,7 @@ def get_ws_icon(e):
 	for key in sites.iterkeys():
 		if key in title:
 			icon = sites[key]
-	
+
 	if icon == default_icon:
 		return icon
 
