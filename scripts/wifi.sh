@@ -11,7 +11,11 @@ elif [[ $wifi_con ]]; then
     # Wifi connection
     name=$(echo "$wifi_con" | sed -r 's/^.*ESSID:"(.+)".*$/\1/g')
     sig_quality=$(/sbin/iwconfig 2>/dev/null | tail -n +2 | grep -i "quality" | sed -r 's/^.*Quality=([0-9]+\/[0-9]+).*$/100*\1/g' | bc)
-	echo " $name ($sig_quality%)"
+    if [ $sig_quality > 0 ]; then
+        echo " $name ($sig_quality%)"
+    else
+        echo " $name"
+    fi
 
 else
     # No connection
