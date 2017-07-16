@@ -49,12 +49,3 @@ def get_beaches(colors, predicate, norm):
         without_duplicates.append(list(set(beach)))
         without_duplicates[-1].sort(key=lambda l: norm(l))
     return without_duplicates
-
-def norm(col):
-    return col
-
-def predicate(col1, col2):
-    return abs(norm(col1) - norm(col2)) < 10
-
-filter_colors([28, 87, 89, 94, 99, 120, 125, 146, 147, 151, 167], predicate, norm)
-# filter_colors([120, 125, 146, 147, 151, 167], predicate, norm)
