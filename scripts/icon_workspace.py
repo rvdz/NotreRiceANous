@@ -15,6 +15,8 @@ def get_ws_icon(e):
 	default_icon = " "
 	title = i3.get_tree().find_focused().name.lower()
 	wclass = i3.get_tree().find_focused().window_class
+        # debug
+        #print "title: {}; wclass: {}".format(title, wclass)
 
 	if wclass is None:
 		return default_icon
@@ -119,6 +121,7 @@ def on_window_title(i3, e):
 
 i3.on("window::focus", on_window_title)
 i3.on("window::title", on_window_title)
+i3.on("window::close", on_window_title)
 i3.on("workspace", on_window_title)
 
 i3.main()
