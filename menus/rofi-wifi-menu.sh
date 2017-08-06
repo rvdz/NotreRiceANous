@@ -11,9 +11,7 @@ YABAR_CONFIG="/home/$USER/NotreRiceANous/yabar/yabaromain.conf"
 IFS=""
 # List of networks
 NETWORKS=$(nmcli --fields SSID,SIGNAL dev wifi list | sed '/^--/d')
-echo $NETWORKS
 NETWORKS=$(echo $NETWORKS | tail -n +2)
-echo $NETWORKS
 NETWORKS=$(echo $NETWORKS | \
     while read LINE; do
         SIGNAL=$(echo $LINE | sed -r "s/(.* )([0-9]+)([^0-9]+)/\2/")
@@ -21,7 +19,6 @@ NETWORKS=$(echo $NETWORKS | \
         LINE=$(echo $LINE | sed -r "s/(.* )([0-9]+)([^0-9]+)/\1${SIGNAL}/")
         echo $LINE
     done)
-echo $NETWORKS
 
 # Dynamically change the height of the rofi menu
 LINE_NUM=$(echo "$NETWORKS" | wc -l)
@@ -49,8 +46,21 @@ WIDTH=$(echo $NETWORKS | \
     done)
 WIDTH=$(echo $WIDTH | sort -nr -k1 | head -n 1)
 # Depends a lot on the font used
-WIDTH=$(($WIDTH))
+WIDTH=$(($WIDTH-3))
 PIX_WIDTH=$(echo "$WIDTH*$FONT_SIZE" | bc)
+
+# Correct display of networks
+#NETWORKS=$(echo $NETWORKS | \
+#    while read LINE; do
+#        SIGNAL=$(echo $LINE | sed -r "s/(.* )([0-9]+)([^0-9]+)/\2/")
+#        SSID=$(echo $LINE | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $1}')
+#        SIGNAL=" $SIGNAL%"
+#        #LINE=$(echo $LINE | sed -r "s/(.* )([0-9]+)([^0-9]+)/\1${SIGNAL}/")
+#        SSID_W=$(($WIDTH-${#SIGNAL}+2))
+#        printf "%s" "$SSID"
+#        printf "%*s\n" $SSID_W "$SIGNAL"
+#        echo $SSID_W
+#    done)
 
 # Menu position
 X=$((${YABAR_BLOCK_X}+${YABAR_BLOCK_WIDTH}-$PIX_WIDTH))
@@ -63,14 +73,13 @@ fi
 echo -e "rofi.font:              $FONT_NAME $FONT_SIZE\n
          rofi.fullscreen:        false\n
          rofi.cycle:             false\n
-         rofi.click-to-exit:     false\n
          rofi.separator-style:   solid\n
          rofi.location:          1\n
          rofi.yoffset:           $Y\n
          rofi.xoffset:           $X\n
          rofi.line-margin:       10\n
          rofi.padding:           5\n
-         rofi.width:             $WIDTH\n
+         rofi.width:             $PIX_WIDTH\n
          rofi.lines:             $LINE_NUM" > "$CONFIG_PATH"
 
 CURR_SSID=$(iwgetid -r)
