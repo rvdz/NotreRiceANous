@@ -1,0 +1,23 @@
+rofi.font:              Droid Sans 11
+
+         rofi.fullscreen:        false
+
+         rofi.cycle:             false
+
+         rofi.click-to-exit:     false
+
+         rofi.separator-style:   solid
+
+         rofi.location:          1
+
+         rofi.yoffset:           40
+
+         rofi.xoffset:           1023
+
+         rofi.line-margin:       10
+
+         rofi.padding:           5
+
+         rofi.width:             29
+
+         rofi.lines:             8
