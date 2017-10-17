@@ -1,11 +1,10 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-USER=$(whoami)
 
-CONFIG_PATH="/home/$USER/NotreRiceANous/menus/Xresources_wifi"
+CONFIG_PATH="$DIR/Xresources_wifi"
 I3_CONFIG="/home/$USER/.i3/config"
-YABAR_CONFIG="/home/$USER/NotreRiceANous/yabar/yabaromain.conf"
+YABAR_CONFIG="$DIR/../yabar/yabaromain.conf"
 
 # To keep carriage return in affectation
 IFS=""
@@ -21,7 +20,7 @@ NETWORKS=$(echo $NETWORKS | \
     done)
 
 # Dynamically change the height of the rofi menu
-LINE_NUM=$(echo "$NETWORKS" | wc -l)
+LINE_NUM=$(($(echo "$NETWORKS" | wc -l)+2))
 # Gives a list of known connections so we can parse it later
 KNOWN_CON=$(nmcli connection show)
 # Really janky way of telling if there is currently a connection
@@ -48,6 +47,10 @@ WIDTH=$(echo $WIDTH | sort -nr -k1 | head -n 1)
 # Depends a lot on the font used
 WIDTH=$(($WIDTH-3))
 PIX_WIDTH=$(echo "$WIDTH*$FONT_SIZE" | bc)
+# Rofi handles width as percentage of screen size if strict below 101
+if [[ $PIX_WIDTH -lt 101 ]]; then
+    PIX_WIDTH=101
+fi
 
 # Correct display of networks
 #NETWORKS=$(echo $NETWORKS | \
@@ -65,6 +68,12 @@ PIX_WIDTH=$(echo "$WIDTH*$FONT_SIZE" | bc)
 # Menu position
 X=$((${YABAR_BLOCK_X}+${YABAR_BLOCK_WIDTH}-$PIX_WIDTH))
 Y=${YABAR_BLOCK_Y}
+if [[ $X -lt 0 ]]; then
+    X=0
+fi
+if [[ $Y = "" ]]; then
+    Y=0
+fi
 if [ -f $I3_CONFIG ]; then
     Y=$(($Y+$(cat $I3_CONFIG | grep "gaps inner" | sed 's/gaps inner //')+$(cat $I3_CONFIG | grep "gaps outer" | sed 's/gaps outer //')))
 fi
@@ -137,7 +146,7 @@ else
         RESULT=$(nmcli con up "$CH_SSID")
 	else
         CH_SECURITY=$(nmcli dev wifi | grep "$CH_SSID")
-        if [[ "$CH_SECURITY" =~ "WPA2" ]] || [[ "$CH_SECURITY" =~ "WEP" ]]; then
+        if [[ "$CH_SECURITY" =~ "WPA2" ]] || [[ "$CH_SECURITY" =~ "WEP" ]] || [[ "$CH_SECURITY" =~ "WPA1" ]]; then
 			WIFI_PASS=$(echo "Enter password for $CH_SSID." | rofi -dmenu -p "Password: " -lines 1 -password -config "$CONFIG_PATH")
 		fi
         RESULT=$(nmcli dev wifi con "$CH_SSID" password "$WIFI_PASS")
