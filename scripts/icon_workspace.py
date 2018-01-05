@@ -114,7 +114,7 @@ def get_ws_icon(e):
 	for key in engines.iterkeys():
 		if key in title:
 			return engines[key]
-	return icon
+	return default_icon
 
 def on_window_title(i3, e):
     printData(get_ws_icon(e))

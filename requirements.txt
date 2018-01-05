@@ -1,0 +1,5 @@
+pip:
+    i3ipc
+apt:
+    yabar
+    rofi
