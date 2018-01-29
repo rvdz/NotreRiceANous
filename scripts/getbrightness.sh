@@ -13,4 +13,9 @@ fi
 
 # Prevent xbacklight small errors to add themselves
 xbacklight -set $round -time 0 -steps 1
-echo " $round%"
+
+if [[ $round -lt 10 ]]; then
+    echo "   $round% "
+else
+    echo "  $round% "
+fi

@@ -3,7 +3,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 CONFIG_PATH="$DIR/Xresources_wifi"
-I3_CONFIG="/home/$USER/.i3/config"
+I3_CONFIG="/home/$USER/.config/i3/config"
 YABAR_CONFIG="$DIR/../yabar/yabaromain.conf"
 
 # To keep carriage return in affectation
@@ -79,17 +79,17 @@ if [ -f $I3_CONFIG ]; then
 fi
 
 # Generating Xresources
-echo -e "rofi.font:              $FONT_NAME $FONT_SIZE\n
-         rofi.fullscreen:        false\n
-         rofi.cycle:             false\n
-         rofi.separator-style:   solid\n
-         rofi.location:          1\n
-         rofi.yoffset:           $Y\n
-         rofi.xoffset:           $X\n
-         rofi.line-margin:       10\n
-         rofi.padding:           5\n
-         rofi.width:             $PIX_WIDTH\n
-         rofi.lines:             $LINE_NUM" > "$CONFIG_PATH"
+echo "rofi.font:            $FONT_NAME $FONT_SIZE" > "$CONFIG_PATH"
+echo "rofi.fullscreen:      false"      >> "$CONFIG_PATH"
+echo "rofi.cycle:           false"      >> "$CONFIG_PATH"
+echo "rofi.separator-cycle: solid"      >> "$CONFIG_PATH"
+echo "rofi.location:        1"          >> "$CONFIG_PATH"
+echo "rofi.yoffset:         $Y"         >> "$CONFIG_PATH"
+echo "rofi.xoffset:         $X"         >> "$CONFIG_PATH"
+echo "rofi.line-margin:     10"         >> "$CONFIG_PATH"
+echo "rofi.padding:         5"          >> "$CONFIG_PATH"
+echo "rofi.width:           $PIX_WIDTH" >> "$CONFIG_PATH"
+echo "rofi.lines:           $LINE_NUM"  >> "$CONFIG_PATH"
 
 CURR_SSID=$(iwgetid -r)
 

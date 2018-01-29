@@ -12,7 +12,7 @@ for d in /sys/class/net/*; do
         con=$(cat "$d/carrier" 2> /dev/null)
         # if connected, check whether connection is wifi or ethernet
         if [[ "$con" == "1" ]]; then
-            if grep -q "wlan" <<< "$dir_name"; then
+            if [[ "$dir_name" =~ "w" ]]; then
                 wifi_con=1
                 icon=""
             else
@@ -31,21 +31,21 @@ fi
 
 if [ "$eth_con" -eq 1 ] && [ "$wifi_con" -eq 0 ]; then
     # Ethernet connection
-	echo "$icon Ethernet"
+	echo " $icon Ethernet "
 
 elif [ "$wifi_con" -eq 1 ]; then
     # Wifi connection
     name=$(/sbin/iwconfig 2>/dev/null | grep "\"" | head -n 1 | sed -r 's/^.*ESSID:"(.+)".*$/\1/g')
     sig_quality=$(/sbin/iwconfig 2>/dev/null | tail -n +2 | grep -i "quality" | sed -r 's/^.*Quality=([0-9]+\/[0-9]+).*$/100*\1/g' | bc)
     if [ $sig_quality > 0 ]; then
-        echo "$icon $name ($sig_quality%)"
+        echo " $icon $name ($sig_quality%)"
     else
-        echo "$icon $name"
+        echo " $icon $name "
     fi
 
 else
     # No connection
-	echo "(Not Connected)"
+	echo " (Not Connected) "
 	exit 0
 fi
 
