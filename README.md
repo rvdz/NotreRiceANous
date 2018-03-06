@@ -5,10 +5,11 @@ Currently, there are dotfiles for the following targets:
 - [Vim](http://www.vim.org)
 - [Rofi](https://github.com/DaveDavenport/rofi)
 - [Compton](https://github.com/chjj/compton)
-- [i3](https://i3wm.org/)
+- [i3](https://i3wm.org/) and [i3 gaps](https://github.com/Airblader/i3)
 - [Yabar](https://github.com/geommer/yabar)
 
 ## Usage
+### Dependencies
 First, install the dependencies:
 
 __Debian__
@@ -31,3 +32,11 @@ pip3 install i3ipc
 ```
 see [yabar](https://github.com/geommer/yabar) and [Rofi](https://github.com/DaveDavenport/rofi)
 to install these target
+
+i3 gaps installation is described [here](https://github.com/Airblader/i3/wiki/Compiling-&-Installing)
+
+## Install
+Run the following command in this folder:
+```bash
+./install.sh
+```
