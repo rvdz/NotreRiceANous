@@ -5,7 +5,7 @@ import i3ipc
 import sys, os
 
 def get_sound_volume():
-    return os.popen("sh ~/NotreRiceANous/scripts/getvolume.sh").read()
+    return os.popen("bash ~/.config/yabar/scripts/getvolume.sh").read()
 
 def printData(data):
     sys.stdout.write(data)

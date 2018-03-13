@@ -67,7 +67,7 @@ gaps inner 5
 gaps outer 3
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill --no-xinerama PICTURE_PATH
+exec --no-startup-id feh --bg-fill --no-xinerama WALLPAPER_PATH
 
 #----------
 # Applications
@@ -189,6 +189,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# lock session
+bindsym $mod+Shift+a exec ~/dev/i3lock-fancy/lock
 # resize window (you can also use the mouse for that)
 mode "resize" {
 # These bindings trigger as soon as you enter the resize mode
@@ -219,21 +221,12 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    position top
-    status_command yabar -c YABAR_CONFIG_FILE
+    position bottom
+    mode hide
+    status_command yabar -c YABAR_CONFIG
 }
 
 # bindsym $mod+d exec dmenu_run -fn "$ft" -nb "$black" -nf "$white" -sb "$yellow" -sf "$black"
 bindsym $mod+d exec rofi -show run
-
-#######################################################################
-# automatically start i3-config-wizard to offer the user to create a
-# keysym-based config which used their favorite modifier (alt or windows)
-#
-# i3-config-wizard will not launch if there already is a config file
-# in ~/.i3/config.
-#
-# Please remove the following exec line:
-#######################################################################
-# exec i3-config-wizard
-# exec setxkbmap -layout es -variant mac -option caps:swapescape
+exec setxkbmap -layout es -variant mac -option caps:swapescape
+exec compton --config ~/.config/compton/compton.conf
