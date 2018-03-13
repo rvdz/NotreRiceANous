@@ -1,7 +1,0 @@
-pip:
-    i3ipc
-apt:
-    yabar
-    rofi
-    git
-    python3

@@ -12,31 +12,24 @@ Currently, there are dotfiles for the following targets:
 ### Dependencies
 First, install the dependencies:
 
-__Debian__
-```bash
-sudo apt install vim python3-pip git yabar rofi -y
-pip3 install i3ipc
-```
-
 __Ubuntu__
 ```bash
-sudo apt install vim python3-pip git rofi -y
-pip3 install i3ipc
+sudo apt update
+sudo apt install vim python3 fonts-font-awesome compton feh python3-pip python python-pip git rofi -y
+pip install i3ipc
 ```
-see [yabar](https://github.com/geommer/yabar) to install this target
-
-__CentOS__
-```bash
-sudo yum install vim yum install python36 python36-setuptools python36-pip git
-pip3 install i3ipc
-```
-see [yabar](https://github.com/geommer/yabar) and [Rofi](https://github.com/DaveDavenport/rofi)
-to install these target
-
-i3 gaps installation is described [here](https://github.com/Airblader/i3/wiki/Compiling-&-Installing)
 
 ## Install
 Run the following command in this folder:
 ```bash
-./install.sh
+./install_ubuntu.sh --wallpaper <path/to/wallpaper> --yabar <config_name>
 ```
+
+# Additional Tools
+## Oh My Zsh
+- [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+
+## i3
+- [i3lock-fancy](https://github.com/meskarune/i3lock-fancy.git)
