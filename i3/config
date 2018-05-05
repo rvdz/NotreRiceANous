@@ -55,8 +55,13 @@ set $urgent-bg-color     #E53935
 new_window pixel 3
 new_float pixel 3
 
+# @hapycolor("random")
+set $border #0000FF
+# @hapycolor("random")
+set $split #000088
+
 #class                  border      backgr.     text        split
-client.focused          $darkgreen  $darkgreen  $black      $green
+client.focused          $border     $border     $black      $split
 client.focused_inactive $grey       $grey       $lightgrey  $grey
 client.unfocused        $grey       $grey       $lightgrey  $grey
 client.urgent           $red        $red        $black      $red

@@ -1,9 +1,11 @@
 #!/bin/bash
 
 PLUGIN_DIR=~/.vim/pack/bundle/start
+PLUGIN_DIR=~/.vim/pack/bundle/opt
 
 mkdir -p $PLUGIN_DIR
 cd $PLUGIN_DIR
+
 
 plugins=(
     https://github.com/kien/ctrlp.vim.git
@@ -19,6 +21,19 @@ plugins=(
     https://github.com/maxbrunsfeld/vim-yankstack.git
     )
 
+
 for p in ${plugins[*]}; do
+    git clone $p
+done
+
+
+opt_plugins=(
+    https://github.com/vim-latex/vim-latex.git
+    )
+
+mkdir -p $OPTIONAL_DIR
+cd $OPTIONAL_DIR
+
+for p in ${opt_plugins[*]}; do
     git clone $p
 done
