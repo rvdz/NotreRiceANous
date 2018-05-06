@@ -1,5 +1,6 @@
 # Notre Rice A Nous
-This project aims at configuring a linux environment in a fast and easy way.
+This project aims at providing a tool that automatically installs and
+configures a linux environment as it should be.
 
 Currently, there are dotfiles for the following targets:
 - [Vim](http://www.vim.org)
@@ -9,23 +10,21 @@ Currently, there are dotfiles for the following targets:
 - [Yabar](https://github.com/geommer/yabar)
 
 ## Usage
-### Dependencies
-First, install the dependencies:
 
-__Ubuntu__
-```bash
-sudo apt update
-sudo apt install vim python3 fonts-font-awesome compton feh python3-pip python python-pip git rofi -y
-pip install i3ipc
+__Ubuntu Xenial (16.04)__:
+```sh
+sudo ./install_xenial.sh
+./configure.sh --wallpaper <path/to/wallpaper> --yabar <config_name>
 ```
 
-## Install
-Run the following command in this folder:
-```bash
-./install_ubuntu.sh --wallpaper <path/to/wallpaper> --yabar <config_name>
+__Debian Strech__:
+```sh
+sudo ./install_stretch.sh
+./configure.sh --wallpaper <path/to/wallpaper> --yabar <config_name>
 ```
 
 # Additional Tools
+
 ## Oh My Zsh
 - [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
