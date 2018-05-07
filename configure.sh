@@ -3,6 +3,7 @@
 if [ "$#" -ne 4 ]; then
     echo "Usage: ./instal.sh --wallpaper <path/to/wallpaper> --yabar <config-name>"
     echo "Available yabar configs: 'yabarobin', 'yabaromain' and 'yannbar'"
+    exit
 fi
 
 POSITIONAL=()
@@ -41,7 +42,7 @@ i3 () {
 wallpaper () {
     # Escaping '/'
     wallpaper_path=python3 -c "print('$WALLPAPER_PATH'.replace('/', '\/'))"
-    sed -i "" "s/WALLPAPER_PATH/$WALLPAPER_PATH/g" $I3_CONFIG
+    sed -i "" "s/WALLPAPER_PATH/$wallpaper_path/g" $I3_CONFIG
 }
 
 

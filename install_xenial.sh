@@ -1,7 +1,10 @@
 #!/bin/bash
 # Ubuntu Xenial and Debian Strech
 
+BASE=~/dev
+
 essentials () {
+    mkdir -p $BASE
     apt update
     apt install -y git python-pip python3-pip curl build-essential feh compton wget autoconf
 }
@@ -22,6 +25,7 @@ i3_gaps () {
                 libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev
 
     # xcb-util-xrm
+    cd $BASE
     wget https://github.com/Airblader/xcb-util-xrm/releases/download/v1.3/xcb-util-xrm-1.3.tar.gz
     tar -zxf xcb-util-xrm-1.3.tar.gz
     cd ./xcb-util-xrm-1.3
@@ -41,13 +45,13 @@ i3_gaps () {
 
     make
     make install
-    cd ../../
 }
 
 yabar () {
     apt install -y libcairo2-dev libpango1.0-dev libconfig-dev libxcb-randr0-dev \
                     libxcb-ewmh-dev libxcb-icccm4-dev libgdk-pixbuf2.0-dev libasound2-dev \
                     libiw-dev libxkbcommon-dev libxkbcommon-x11-dev libxcb-xkb-dev
+    cd $BASE
     git clone https://github.com/geommer/yabar.git
     cd ./yabar
 
@@ -55,7 +59,6 @@ yabar () {
     # Remove doc creation (requires latex)
     sed -i "/\b\(MANPREFIX\)\b/d" Makefile
     make install
-    cd ../
 }
 
 rofi () {
@@ -63,6 +66,7 @@ rofi () {
                 libpangocairo-1.0-0 librsvg2-dev libstartup-notification0-dev \
                 libxkbcommon-dev libxkbcommon-x11-dev
 
+    cd $BASE
     # Bison parser
     wget http://mirror.ibcp.fr/pub/gnu/bison/bison-1.25.tar.gz
     tar -xvf bison-1.25.tar.gz
@@ -88,12 +92,20 @@ rofi () {
     ./configure
     make
     make install
-    cd ../
 }
 
 yabar_utils () {
     apt install -y amixer
     pip install i3ipc
+}
+
+zsh () {
+    apt install -y zsh
+    cd $BASE
+    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    echo "Please add 'zsh-autosuggestions' and 'zsh-syntax-highlighting' to your .zshrc"
 }
 
 essentials
@@ -102,3 +114,4 @@ i3_gaps
 yabar
 rofi
 yabar_utils
+zsh
