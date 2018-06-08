@@ -108,6 +108,11 @@ zsh () {
     echo "Please add 'zsh-autosuggestions' and 'zsh-syntax-highlighting' to your .zshrc"
 }
 
+fzf () {
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+}
+
 essentials
 i3
 i3_gaps
