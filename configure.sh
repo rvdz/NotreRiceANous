@@ -27,7 +27,28 @@ compton () {
     echo "exec compton  --config ~/.config/compton.conf -b" >> $I3_CONFIG
 }
 
-i3
-yabar
-vim
-compton
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+        --i3)
+            i3
+            shift;;
+        --yabar)
+            yabar
+            shift;;
+        --vim)
+            vim
+            shift;;
+        --compton)
+            compton
+            shift;;
+        --all)
+            i3
+            yabar
+            vim
+            compton
+            shift;;
+    esac
+done
+
+

@@ -27,7 +27,7 @@ you configure them. What it will do is:
 - Add compton support into i3's config
 
 ```sh
-./configure.sh
+./configure.sh [--i3] [--yabar] [--vim] [--compton] [--all]
 ```
 
 # Additional Tools
