@@ -10,9 +10,9 @@ Currently, there are dotfiles for the following targets:
 - [Yabar](https://github.com/geommer/yabar)
 
 ## Usage
-The install script is currently only compatible with Debian or Ubuntu.
+The install script is currently only compatible with Debian and Ubuntu.
 This script allows you to install the main targets through a single entry point,
-for instance, if you want to install `i3`, just run `sudo ./install.sh --i3`.
+for instance, if you want to install `yabar`, just run `sudo ./install.sh --yabar`.
 
 ```sh
 Usage:
@@ -21,13 +21,14 @@ Usage:
 
 Once you have installed your targets, we created a script to help
 you configure them. What it will do is:
-- Add i3's config to `~/.config/i3/config`
+- Add the i3 of this project to `~/.config/i3/config`
 - Add yabar custom scripts and configs in `~/.config/yabar`
 - Install some useful vim plugins
 - Add compton support into i3's config
 
 ```sh
-./configure.sh [--i3] [--yabar] [--vim] [--compton] [--all]
+Usage:
+    ./configure.sh [--i3] [--yabar] [--vim] [--compton] [--all]
 ```
 
 # Additional Tools
@@ -41,7 +42,7 @@ you configure them. What it will do is:
 - [i3lock-fancy](https://github.com/meskarune/i3lock-fancy.git)
 
 ## Yabar
-In addition of yabar's base scripts, we added some more:
+In addition to yabar's base scripts, we added some more:
 - Battery level
 - Brightness level
 - CPU temperature
