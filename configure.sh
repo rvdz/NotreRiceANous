@@ -15,11 +15,6 @@ yabar () {
     cp -r yabar  ~/.config
 }
 
-rofi () {
-    echo "Setting Rofi"
-    echo "NOT IMPLEMENTED"
-}
-
 vim () {
     echo "Setting Vim"
     ./vim/install_plugins.sh
@@ -33,8 +28,6 @@ compton () {
 }
 
 i3
-wallpaper
 yabar
-rofi
 vim
 compton
