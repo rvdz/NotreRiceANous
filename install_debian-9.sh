@@ -88,6 +88,19 @@ rofi () {
 yabar_utils () {
     apt install -y amixer
     pip install i3ipc
+
+    # Installing playerctl (music player)
+    wget https://github.com/acrisci/playerctl/releases/download/v2.0.1/playerctl-2.0.1_amd64.deb
+    dpkg -i playerctl-2.0.1_amd64.deb
+    apt install -f
+}
+
+zsh () {
+    apt install -y zsh
+    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    echo "Please add 'zsh-autosuggestions' and 'zsh-syntax-highlighting' to your .zshrc"
 }
 
 essentials
@@ -96,3 +109,4 @@ i3_gaps
 yabar
 rofi
 yabar_utils
+zsh

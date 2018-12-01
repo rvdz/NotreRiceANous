@@ -97,6 +97,11 @@ rofi () {
 yabar_utils () {
     apt install -y amixer
     pip install i3ipc
+
+    # Installing playerctl (music player)
+    wget https://github.com/acrisci/playerctl/releases/download/v2.0.1/playerctl-2.0.1_amd64.deb
+    dpkg -i playerctl-2.0.1_amd64.deb
+    apt install -f
 }
 
 zsh () {

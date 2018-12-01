@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PLUGIN_DIR=~/.vim/pack/bundle/start
-PLUGIN_DIR=~/.vim/pack/bundle/opt
+PLUGIN_DIR="~/.vim/pack/bundle/start"
+OPTIONAL_DIR="~/.vim/pack/bundle/opt"
 
 mkdir -p $PLUGIN_DIR
 cd $PLUGIN_DIR
@@ -28,7 +28,7 @@ done
 
 
 opt_plugins=(
-    https://github.com/vim-latex/vim-latex.git
+    # https://github.com/vim-latex/vim-latex.git
     )
 
 mkdir -p $OPTIONAL_DIR
