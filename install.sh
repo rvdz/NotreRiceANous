@@ -3,9 +3,9 @@
 
 BASE=~/dev
 
-if [[ $(lsb_release -a 2> /dev/null | grep Debian) ]]; then
+if [[ $(cat /etc/os-release | grep Debian) ]]; then
     OS="Debian"
-elif [[ $(lsb_release -a 2> /dev/null | grep Ubuntu) ]]; then
+elif [[ $(cat /etc/os-release | grep Ubuntu) ]]; then
     OS="Ubuntu"
 else
     echo "This script is only compatible with Debian or Ubuntu"
@@ -17,7 +17,7 @@ fi
 essentials () {
     mkdir -p $BASE
     apt update
-    apt install -y git python-pip python3-pip curl build-essential feh wget autoconf
+    apt install -y apt-utils git python-pip python3-pip curl build-essential feh wget autoconf
 }
 
 compton () {
@@ -123,7 +123,7 @@ yabar () {
 }
 
 yabar_utils () {
-    apt install -y amixer
+    apt install -y alsa-utils
     pip install i3ipc
 
     # Installing playerctl (music player)

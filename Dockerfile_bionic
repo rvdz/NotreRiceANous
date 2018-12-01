@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:bionic
 
 ENV workdir ~/NotreRiceANous
 ADD . ${workdir}

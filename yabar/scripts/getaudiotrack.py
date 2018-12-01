@@ -3,6 +3,7 @@
 import subprocess as sp
 import sys
 import i3ipc
+import time
 
 
 cmd = ["playerctl", "metadata"]
@@ -27,6 +28,8 @@ def print_string(msg):
 
 
 def on_track_change(self, e):
+    # Wait for the player to start/stop before checking its new status
+    time.sleep(0.1)
     if is_playing():
         print_string("{} - {}".format(get_artist(), get_title()))
     else:
