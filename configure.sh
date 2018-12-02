@@ -7,6 +7,7 @@ i3 () {
     mkdir -p ~/.config/i3
     echo "Setting i3"
     cp ./i3/config $I3_CONFIG
+    cp ./i3/brightness.sh $I3_CONFIG
 }
 
 yabar () {
