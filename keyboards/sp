@@ -7,18 +7,18 @@ xkb_symbols "basic" {
 
     name[Group1]="Spanglish";
 
-    key <AE11>	{ [ plus, asterisk, backslash, questiondown ]	};
-    key <AE12>	{ [ asciicircum, grave, dead_tilde,   asciitilde ]	};
+    key <AE11>	{ [ asciicircum, question, dead_tilde,   asciitilde ]	};
+    key <AE12>	{ [ plus, asterisk, backslash, questiondown ]	};
 
-    key <AD11>	{ [     bracketleft, braceleft,  bracketleft,      degree ]	};
-    key <AD12>	{ [      bracketright,   braceright, bracketright,       macron ]	};
+    key <AD11>	{ [ bracketleft, braceleft, bracketleft, degree ]	};
+    key <AD12>	{ [ bracketright, braceright, bracketright, macron ]	};
 
-    key <AC10>	{ [    asciitilde,     question,   asciitilde,  doubleacute ]	};
-    key <AC11>	{ [     apostrophe,  quatedbl,    braceleft,    braceleft ]	};
-    key <BKSL>	{ [  backslash,   bar,   braceright,        breve ]	};
+    key <AC10>	{ [ asciitilde, grave, asciitilde, doubleacute ] };
+    key <AC11>	{ [ apostrophe, quatedbl, braceleft, braceleft ] };
+    key <BKSL>	{ [ backslash, bar, braceright, breve ] };
 
-    key <AE02> {[          2, at, at, twosuperior			]};
-    key <AE03> {[          3, numbersign, numbersign, threesuperior	]};
+    key <AE02> {[ 2, at, at, twosuperior ] };
+    key <AE03> {[ 3, numbersign, numbersign, threesuperior ] };
 
     include "level3(ralt_switch)"
 };
