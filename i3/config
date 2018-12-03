@@ -28,9 +28,8 @@ font pango:DejaVu Sans Mono 8
 # is used in the bar {} block below.
 set $ft:DejaVu Sans Mono 8
 
-
 #-------
-# Media Keys
+# Audio
 #-------
 bindsym XF86AudioRaiseVolume exec amixer -c 1 -q sset Master 3%+
 bindsym XF86AudioLowerVolume exec amixer -c 1 -q sset Master 3%-
@@ -40,9 +39,12 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym XF86MonBrightnessUp exec ~/.config/i3/brightness.sh -u
-bindsym XF86MonBrightnessDown exec ~/.config/i3/brightness.sh -d
+# Luminosity bindings
+# Make sure that xbacklight is installed
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
+bindsym 0xff61 exec gnome-screenshot
 
 #-------
 # Look
@@ -72,9 +74,9 @@ new_window pixel 3
 new_float pixel 3
 
 # @hapycolor("random")
-set $border #0000FF
+set $border #D19D86
 # @hapycolor("random")
-set $split #000088
+set $split #90390E
 
 #class                  border      backgr.     text        split
 client.focused          $border     $border     $black      $split
@@ -88,7 +90,7 @@ gaps inner 5
 gaps outer 3
 
 # Wallpaper
-# exec --no-startup-id feh --bg-fill --no-xinerama WALLPAPER_PATH
+exec --no-startup-id feh --bg-fill AnYRnOU.jpg
 
 #----------
 # Applications
@@ -244,9 +246,12 @@ bindsym $mod+r mode "resize"
 bar {
     position bottom
     mode hide
-    # status_command yabar -c YABAR_CONFIG
+    status_command yabar -c ~/.config/yabar/yannbar.conf
 }
 
 # bindsym $mod+d exec dmenu_run -fn "$ft" -nb "$black" -nf "$white" -sb "$yellow" -sf "$black"
-bindsym $mod+d exec rofi -show run # -theme ~/path/to/rasi/file
-exec setxkbmap -layout es -variant mac -option caps:swapescape
+bindsym $mod+d exec rofi -show run -theme ~/.config/hapycolor.rasi
+# exec setxkbmap -layout es -variant mac -option caps:swapescape
+exec setxkbmap -layout sp -option caps:swapescape
+exec compton  --config ~/.config/compton.conf -b
+exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=-111
